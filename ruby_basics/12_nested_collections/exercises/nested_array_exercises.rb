@@ -11,16 +11,28 @@ def blank_seating_chart(number_of_rows, seats_per_row)
 
   # NOTE: if one of the nested arrays is changed, the others should **not**
   # change with it
+  # 
+  nested_ = Array.new(number_of_rows) {Array.new(seats_per_row)}
+  nested_ 
+  
 end
 
 def add_seat_to_row(chart, row_index, seat_to_add)
   # take a chart (2d array)  and add seat_to_add to the end of the row that is
   # at row_index index of the chart, then return the chart
+   
+  chart[row_index].push(seat_to_add)
+  chart
+  
 end
 
 def add_another_row(chart, row_to_add)
   # take a chart and add row_to_add to the end of the chart,
   # then return the chart.
+  
+  chart.push(row_to_add)
+  chart
+  
 end
 
 def delete_seat_from_row(chart, row_index, seat_index)
@@ -28,17 +40,42 @@ def delete_seat_from_row(chart, row_index, seat_index)
   # the chart, then return the chart
 
   # Hint: explore the ruby docs to find a method for deleting from an array!
+   
+  chart[row_index].delete_at(seat_index)
+  chart
+#   chart.each_with_index do | row_index , seat| 
+#     row_index.each_with_index do |seat_index, collumn|
+#       seat_index.delete{collumn == seat}
+#     end
+#   end
+#   chart 
+   
 end
+
 
 def delete_row_from_chart(chart, row_index)
   # take a chart and delete the row at row_index of the chart,
   # then return the chart
+  
+  chart.delete_at(row_index)
+  chart
+
 end
 
 def count_empty_seats(chart)
   # take a chart and return the number of empty (nil) seats in it
-
   # NOTE: `chart` should **not** be mutated
+  sum = 0
+   chart.each_with_index do |row, r|
+    row.each_with_index do |cell, c|
+      if ( row[cell] == nil )
+        puts sum +=1
+      end
+    end
+    return sum 
+   end
+
+   
 end
 
 def find_favorite(array_of_hash_objects)

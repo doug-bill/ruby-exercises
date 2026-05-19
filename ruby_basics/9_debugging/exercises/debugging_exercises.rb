@@ -1,3 +1,5 @@
+require 'pry-byebug'
+
 # First, we're going to practice reading the Stack Trace
 # Don't look at this method prior to running the test
 # Type 'rspec' into the terminal to run Rspec
@@ -10,7 +12,7 @@ def decrement_smallest_value(nested_array)
   nested_array.each do |array|
     array.each do |current_value|
       if smallest_value > current_value
-        smallest_value = current_valu
+        smallest_value = current_value
       end
     end
   end
@@ -21,15 +23,15 @@ end
 # Don't look at this method prior to running the test
 # Run rspec, let the test fail, and go through the stack trace again
 def increment_greatest_value(nested_array)
-  greatest_value = nested_array.flatten.min
+   greatest_value = nested_array.flatten.min
   nested_array.each do |array|
     array.each do |current_value|
-      if greatest_value < nil
+      if greatest_value < nested_array.flatten.max
         greatest_value = current_value
       end
     end
   end
-  greatest_value += 1
+  return greatest_value += 1
 end
 
 # This next exercise might look familiar
@@ -37,9 +39,9 @@ end
 
 def isogram?(string)
   original_length = string.length
-  string_array = string.downcase.split
+  string_array = string.downcase.split('')
   unique_length = string_array.uniq.length
-  original_length == unique_length
+  original_length == unique_length  
 end
 
 # Can you guess what's next?
@@ -51,6 +53,8 @@ end
 
 def yell_greeting(string)
   name = string
-  name = name.downcase
-  greeting = "WASSAP, #{name}!"
+  name = name.upcase
+  binding.pry
+  return greeting = "WASSAP, #{name}!"
+ 
 end
